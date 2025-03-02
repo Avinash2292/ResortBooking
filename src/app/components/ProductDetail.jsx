@@ -11,7 +11,7 @@ import Link from 'next/link'
 import CalenderComponent from '@/app/components/CalenderComponent'
 import { bookingAction } from '../serverActions/bookingAction'
 // import { Circles } from 'react-loader-spinner'
-import { ClipLoader } from "react-spinners";
+// import { ClipLoader } from "react-spinners";
 
 
 
@@ -64,50 +64,45 @@ const DynamicProduct = () => {
 
   return (
     <div>
-        <CalenderComponent onDatesSelect={handleDateSelect}/>
-        <Link href="/">
-        <p align="center">Go Back</p>
-        </Link>
-      {record? 
-         (<div className="">
-            <div className="singleSection">
-            <div className="singleLeft">
-              <div className="">
-               <h2>{record.title}</h2>
-              </div>
-              <img src={record.image} alt={record.title} className="singleImage"/>
-              </div>
-              <div className="singleCenter">
-               <div className="singlePrice">Rs.{record.price}</div>
-               <p className="singleDesc">{record.desc}</p>
-               <div className="">
-                   {record.amen.map((item, i)=>{
-                       return(
-                           <div className="singleAmen"  key={i}>
-                              <span>*</span> {item}
-                           </div>
-                       )
-                   })}
-               </div>
-               <div className="offer">
-               <span>*</span>
-                  <button>  Discount {record.offer}</button>
-               </div>
-               <div className="singleBtn">
-                   <button className="" onClick={bookingHandler}  >Book Now</button>
-               </div>
-              </div>
-            </div>
+    <CalenderComponent onDatesSelect={handleDateSelect} />
+    
+    <Link href="/">
+      <p align="center">Go Back</p>
+    </Link>
 
-           </div>)
-        : <h1 style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
-        <ClipLoader color="#36d7b7" size={80} />
-      </h1>}
-        
-</div>
-  )
+    {record && (
+      <div className="singleSection">
+        <div className="singleLeft">
+          <h2>{record.title}</h2>
+          <img src={record.image} alt={record.title} className="singleImage" />
+        </div>
+
+        <div className="singleCenter">
+          <div className="singlePrice">Rs. {record.price}</div>
+          <p className="singleDesc">{record.desc}</p>
+
+          <div className="singleAmenities">
+            {record.amen.map((item, i) => (
+              <div className="singleAmen" key={i}>
+                <span>*</span> {item}
+              </div>
+            ))}
+          </div>
+
+          <div className="offer">
+            <span>*</span>
+            <button>Discount {record.offer}</button>
+          </div>
+
+          <div className="singleBtn">
+            <button onClick={bookingHandler}>Book Now</button>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
   
-  
+  );
 }
 
 export default DynamicProduct
