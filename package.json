@@ -16,7 +16,7 @@
     "react": "^19.0.0",
     "react-date-range": "^2.0.1",
     "react-dom": "^19.0.0",
-    "react-loader-spinner": "^6.1.6"
+    "react-spinners": "^0.15.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

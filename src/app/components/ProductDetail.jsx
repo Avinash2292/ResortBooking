@@ -10,7 +10,8 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import CalenderComponent from '@/app/components/CalenderComponent'
 import { bookingAction } from '../serverActions/bookingAction'
-import { Circles } from 'react-loader-spinner'
+// import { Circles } from 'react-loader-spinner'
+import { ClipLoader } from "react-spinners";
 
 
 
@@ -34,7 +35,6 @@ const DynamicProduct = () => {
         setRecord(newData.data)
 
     }
-
     useEffect(()=>{
         dynamicProductHandler()
     }, [])
@@ -100,15 +100,10 @@ const DynamicProduct = () => {
             </div>
 
            </div>)
-        :<h1 style={{position:'absolute', top:'50%', left:'50%'}}>    <Circles
-        height="80"
-        width="80"
-        color="#4fa94d"
-        ariaLabel="circles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-        /></h1>}
+        : <h1 style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+        <ClipLoader color="#36d7b7" size={80} />
+      </h1>}
+        
 </div>
   )
   
